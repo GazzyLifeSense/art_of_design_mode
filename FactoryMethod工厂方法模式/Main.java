@@ -4,14 +4,18 @@ public class Main {
     }
 
     public static void testLoggerFactory() {
-        LoggerFactory lf;
+        LoggerFactory factory;
         Logger logger;
-        lf = new FileLoggerFactory();
-        logger = lf.createLogger();
+        factory = new FileLoggerFactory();
+        logger = factory.createLogger();
         logger.writeLog();
 
-        lf = new DatabaseLoggerFactory();
-        logger = lf.createLogger();
+        factory = new DatabaseLoggerFactory();
+        // 工厂类直接调用业务方法
+        factory.writeLog();
+
+        factory = (LoggerFactory) XMLUtil.getBean();
+        logger = factory.createLogger();
         logger.writeLog();
     }
 }

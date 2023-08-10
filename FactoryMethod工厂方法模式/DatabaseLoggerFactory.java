@@ -6,4 +6,20 @@ public class DatabaseLoggerFactory extends LoggerFactory {
         // 初始化记录器
         return logger;
     }
+
+    @Override
+    public Logger createLogger(String args) {
+        // 使用args作为连接字符串连接数据库
+        Logger logger = new DatabaseLogger();
+        // 初始化记录器
+        return logger;
+    }
+
+    @Override
+    public Logger createLogger(Object obj) {
+        // 使用obj作为连接信息对象连接数据库
+        Logger logger = new DatabaseLogger();
+        // 初始化记录器
+        return logger;
+    }
 }
